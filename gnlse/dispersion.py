@@ -7,7 +7,7 @@ frequency domain.
 """
 import numpy as np
 from scipy import interpolate
-
+import math
 from gnlse.common import c
 
 
@@ -67,7 +67,7 @@ class DispersionFiberFromTaylor(Dispersion):
         self.calc_loss()
         # Taylor series for subsequent derivatives
         # of constant propagation
-        B = sum(beta / np.math.factorial(i + 2) * V**(i + 2)
+        B = sum(beta / math.factorial(i + 2) * V**(i + 2)
                 for i, beta in enumerate(self.betas))
         L = 1j * B - self.alpha / 2
         return L
